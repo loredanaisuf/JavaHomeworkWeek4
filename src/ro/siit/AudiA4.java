@@ -1,12 +1,11 @@
 package ro.siit;
 
 public class AudiA4 extends Audi {
-    private final double CONSUMPTION_PER_100_KM=4.7;
-    private final int GEAR=5;
-    private double availableFuel;
+
+    private float availableFuel;
     private String chassisNumber;
-    private double consumption;
-    private double totalConsumption;
+    private float consumption;
+    private int tireSize;
 
     public AudiA4(int availableFuel, String chassisNumber){
         this.availableFuel=availableFuel;
@@ -14,28 +13,16 @@ public class AudiA4 extends Audi {
         totalConsumption=0;
     }
 
-
     @Override
-    public double getAvailableFuel() {
+    public float getAvailableFuel() {
         return this.availableFuel-totalConsumption;
     }
 
-    @Override
-    public void shiftGear(int gear) {
-        if(gear>GEAR){
-            System.out.println("This car doesn't have this gear");
-        }
-    }
 
     @Override
-    public double getAverageFuelConsumption() {
-        return CONSUMPTION_PER_100_KM;
-    }
-
-
-    @Override
-    public void drive(double n) {
-        consumption=n*0.01*CONSUMPTION_PER_100_KM;
-        totalConsumption+=consumption;
+    public void setTireSize(int tireSize) {
+        this.tireSize=tireSize;
+        if(tireSize>17)
+            totalConsumption+=4;
     }
 }

@@ -3,28 +3,29 @@ package ro.siit;
 public class Main {
 
     public static void main(String[] args) {
-	Car car=new AudiA5(50,"jfdkfdlfjvdf");
+        System.out.println("........Car1.......");
+	    Car car=new AudiA5(50,"jfdkfdlfjvdf");
         car.start();
 
         car.shiftGear(1);
 
-        car.drive(0.01);// drives 0.01 KMs
+        car.drive(0.01f);// drives 0.01 KMs
 
         car.shiftGear(2);
 
-        car.drive(0.02);
+        car.drive(0.02f);
 
         car.shiftGear(3);
 
-        car.drive(0.5);
+        car.drive(0.5f);
 
         car.shiftGear(4);
 
-        car.drive(0.5);
+        car.drive(0.5f);
 
         car.shiftGear(4);
 
-        car.drive(0.5);
+        car.drive(0.5f);
 
         car.shiftGear(5);
 
@@ -32,24 +33,27 @@ public class Main {
 
         car.shiftGear(4);
 
-        car.drive(0.5);
+        car.drive(0.5f);
 
         car.shiftGear(3);
 
-        car.drive(0.1);
+        car.drive(0.1f);
 
         car.stop();
 
-        double availableFuel = car.getAvailableFuel();
+        float availableFuel = car.getAvailableFuel();
         System.out.println("The fuel available is: " + availableFuel);
 
-        double fuelConsumedPer100Km = car.getAverageFuelConsumption();
+        float fuelConsumedPer100Km = car.getAverageFuelConsumption();
         System.out.println("The fuel consumed per 100 km is: " + fuelConsumedPer100Km);
 
-        Vehicle vehicle=new AudiA5(30,"CNJFDDFHL");
+
+        System.out.println("........Car2.......");
+
+        Vehicle vehicle=new CKlasse(30,"CNJFDDFHL");
         vehicle.start();
 
-        vehicle.drive(1);
+        vehicle.drive(100);
 
         vehicle.stop();
 
@@ -60,5 +64,30 @@ public class Main {
 
         fuelConsumedPer100Km = car2.getAverageFuelConsumption();
         System.out.println("The fuel consumed per 100 km is: " + fuelConsumedPer100Km);
+
+        CKlasse ck=(CKlasse) car2;
+        ck.getTotalConsumption();
+        ck.setSpeed(120);
+        availableFuel=ck.getAvailableFuel();
+        ck.getTotalConsumption();
+        System.out.println("The fuel available after the speed has increased: " + availableFuel);
+
+
+        System.out.println("........Car3.......");
+
+        Car car3=new AudiA4(40,"fdfdjnkfjnvf");
+        car3.start();
+        car3.drive(30);
+        car3.drive(100);
+        car3.stop();
+        availableFuel = car3.getAvailableFuel();
+        System.out.println("The fuel available is: " + availableFuel);
+
+        fuelConsumedPer100Km = car3.getAverageFuelConsumption();
+        System.out.println("The fuel consumed per 100 km is: " + fuelConsumedPer100Km);
+        AudiA4 a4=(AudiA4) car3;
+        a4.setTireSize(19);
+        availableFuel=a4.getAvailableFuel();
+        System.out.println("The fuel available after the speed has increased: " + availableFuel);
     }
 }
