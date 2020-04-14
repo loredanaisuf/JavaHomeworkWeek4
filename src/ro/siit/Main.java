@@ -70,7 +70,7 @@ public class Main {
         ck.setSpeed(120);
         availableFuel=ck.getAvailableFuel();
         ck.getTotalConsumption();
-        System.out.println("The fuel available after the speed has increased: " + availableFuel);
+        System.out.println("The fuel available if the speed is increased: " + availableFuel);
 
 
         System.out.println("........Car3.......");
@@ -88,6 +88,29 @@ public class Main {
         AudiA4 a4=(AudiA4) car3;
         a4.setTireSize(19);
         availableFuel=a4.getAvailableFuel();
-        System.out.println("The fuel available after the speed has increased: " + availableFuel);
+        System.out.println("The fuel available if the tires are changed: " + availableFuel);
+
+
+        System.out.println("........Car4.......");
+
+        Vehicle vehicle1=new SKlasse(20,"CNJFDDFHL");
+        vehicle1.start();
+
+        vehicle1.drive(200);
+
+        vehicle1.stop();
+
+        Car car4 = (Car) vehicle1;
+
+        availableFuel = car4.getAvailableFuel();
+        System.out.println("The fuel available is: " + availableFuel);
+
+        fuelConsumedPer100Km = car4.getAverageFuelConsumption();
+        System.out.println("The fuel consumed per 100 km is: " + fuelConsumedPer100Km);
+
+        SKlasse sk=(SKlasse) car4;
+        sk.setSpeed(20);
+        availableFuel=sk.getAvailableFuel();
+        System.out.println("The fuel available if the speed is decreased: " + availableFuel);
     }
 }

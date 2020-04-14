@@ -1,33 +1,43 @@
 package ro.siit;
 
 public class CKlasse extends Mercedes {
-    private float availableFuel;
-    private String chassisNumber;
-    private float consumption;
-    private int speed;
+    private final int FUEL_TANK_SIZE=60;
+    private final float CONSUMPTION_PER_100_KM=4.5f;
+    private final int GEAR=5;
 
     public CKlasse(int availableFuel, String chassisNumber){
-        this.availableFuel=availableFuel;
-        this.chassisNumber=chassisNumber;
-        totalConsumption=0;
+        super(availableFuel,chassisNumber);
     }
 
     @Override
-    public float getAvailableFuel() {
+    public void drive(float n) {
+        consumption= (float) (n*0.01*CONSUMPTION_PER_100_KM);
+        totalConsumption+=consumption;
+    }
+
+    @Override
+    public void shiftGear(int gear) {
+        if(gear>GEAR){
+            System.out.println("This car doesn't have this gear");
+        }
+        currentGear=gear;
+    }
+    @Override
+    public float getAverageFuelConsumption() {
         if(AC) {
-            return this.availableFuel - totalConsumption - 4;
-        }else {
-            return this.availableFuel - totalConsumption;
+            return CONSUMPTION_PER_100_KM + 1;
+        }else{
+            return CONSUMPTION_PER_100_KM;
         }
     }
 
+
     public void getTotalConsumption(){
-        System.out.println("total consum: "+totalConsumption);
+        System.out.println("Total consum: "+totalConsumption);
     }
 
     @Override
     public void setSpeed(int speed) {
-        this.speed=speed;
         if(speed>100)
             this.totalConsumption= (float) (1.2*this.totalConsumption);
     }
